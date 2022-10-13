@@ -38,6 +38,18 @@ public class HouseService {
         return true;
     }
 
+    //根据id查找房屋信息
+    public House findById(int findId) {
+
+        //遍历数组
+        for(int i = 0; i < houseNums; i++) {
+            if(findId == houses[i].getId()) {
+                return houses[i];
+            }
+        }
+        return null;
+    }
+
     //add方法，添加新对象，返回boolean，判断是否添加成功
     public boolean add(House newHouse) {
         if(houseNums == houses.length) {

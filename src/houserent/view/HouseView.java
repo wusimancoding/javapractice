@@ -35,6 +35,21 @@ public class HouseView {
         }
     }
 
+    //根据id查找房屋信息
+    public void findHouse() {
+        System.out.println("============添加房屋===========");
+        System.out.println("请输入要查找的id");
+        int findId  = Utility.readInt();
+
+        //调用方法
+        House house = houseService.findById(findId);
+        if(house == null) {
+            System.out.println("该id不存在");
+        }else {
+            System.out.println(house);
+        }
+    }
+
     //编写addHouse()接收输入，创建House对象，调用add方法;
     public void addHouse() {
         System.out.println("============添加房屋===========");
@@ -55,6 +70,14 @@ public class HouseView {
             System.out.println("============房屋添加成功===========");
         } else {
             System.out.println("============房屋添加失败===========");
+        }
+    }
+
+    //编写退出代码
+    public void exit() {
+        char c = Utility.readConfirmSelection();
+        if(c == 'Y') {
+            loop = false;
         }
     }
 
@@ -89,11 +112,10 @@ public class HouseView {
                     addHouse();
                     break;
                 case'2':
-                    System.out.println("查找");
+                    findHouse();
                     break;
                 case'3':
                     delHouse();
-                    System.out.println("删除");
                     break;
                 case'4':
                     System.out.println("修改");
@@ -102,8 +124,7 @@ public class HouseView {
                     listHouse();
                     break;
                 case'6':
-                    System.out.println("退出");
-                    loop = false;
+                    exit();
                     break;
             }
 
